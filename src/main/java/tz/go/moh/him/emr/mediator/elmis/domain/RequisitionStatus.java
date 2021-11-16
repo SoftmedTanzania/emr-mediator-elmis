@@ -1,4 +1,4 @@
-package tz.go.hom.him.emr.mediator.elmis.domain;
+package tz.go.moh.him.emr.mediator.elmis.domain;
 
 import java.util.List;
 

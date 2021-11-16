@@ -1,0 +1,33 @@
+{
+  "urn": "urn:uuid:0d32b3e0-45d5-11ec-ad0a-3bccdeca8e69",
+  "version": "0.1.0",
+  "name": "eLMIS to EMR Mediator",
+  "description": "A mediator for handling system integration between EMR and eLMIS",
+  "endpoints": [
+    {
+      "name": "eLMIS to EMR Mediator Route",
+      "host": "localhost",
+      "port": "3016",
+      "path": "/rnr-status",
+      "type": "http"
+    }
+  ],
+  "defaultChannelConfig": [
+    {
+      "name": "eLMIS to EMR Mediator",
+      "urlPattern": "^/rnr-status$",
+      "type": "http",
+      "allow": ["elmis-role"],
+      "routes": [
+        {
+          "name": "eLMIS to EMR Mediator Route",
+          "host": "localhost",
+          "port": "3016",
+          "path": "/rnr-status",
+          "type": "http",
+          "primary": "true"
+        }
+      ]
+    }
+  ]
+}

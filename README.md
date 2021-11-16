@@ -1,5 +1,6 @@
 # eLMIS to EMR Mediator
 
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/2ca14ac18d374af8938a3d6a5cc65052)](https://app.codacy.com/gh/SoftmedTanzania/emr-mediator-elmis?utm_source=github.com&utm_medium=referral&utm_content=SoftmedTanzania/emr-mediator-elmis&utm_campaign=Badge_Grade_Settings)
 [![Java CI Badge](https://github.com/SoftmedTanzania/emr-mediator-elmis/workflows/Java%20CI%20with%20Maven/badge.svg)](https://github.com/SoftmedTanzania/emr-mediator-elmis/actions?query=workflow%3A%22Java+CI+with+Maven%22)
 [![Coverage Status](https://coveralls.io/repos/github/SoftmedTanzania/emr-mediator-elmis/badge.svg?branch=development)](https://coveralls.io/github/SoftmedTanzania/emr-mediator-elmis?branch=development)
 

@@ -17,7 +17,9 @@
       "name": "eLMIS to EMR Mediator",
       "urlPattern": "^/rnr-status$",
       "type": "http",
-      "allow": ["elmis-role"],
+      "allow": [
+        "elmis-role"
+      ],
       "routes": [
         {
           "name": "eLMIS to EMR Mediator Route",
@@ -26,6 +28,104 @@
           "path": "/rnr-status",
           "type": "http",
           "primary": "true"
+        }
+      ]
+    }
+  ],
+  "configDefs": [
+    {
+      "param": "gothomisConnectionProperties",
+      "displayName": "GoTHOMIS Connection Properties",
+      "description": "Configuration to set the hostname, port and path for the GoTHOMIS server",
+      "type": "struct",
+      "template": [
+        {
+          "param": "gothomisHost",
+          "displayName": "GoTHOMIS Host Name",
+          "description": "IP address/hostname of the GoTHOMIS server. e.g 192.168.1.1",
+          "type": "string"
+        },
+        {
+          "param": "gothomisPort",
+          "displayName": "GoTHOMIS Port Number",
+          "description": "The port number of the GoTHOMIS server. e.g 8080",
+          "type": "number"
+        },
+        {
+          "param": "gothomisPath",
+          "displayName": "GoTHOMIS Path",
+          "description": "The GoTHOMIS path for receiving of data from the HIM. eg /hdr",
+          "type": "string"
+        },
+        {
+          "param": "gothomisScheme",
+          "displayName": "GoTHOMIS Scheme",
+          "description": "Whether the GoTHOMIS is using HTTP or HTTPS requests",
+          "type": "option",
+          "values": [
+            "http",
+            "https"
+          ]
+        },
+        {
+          "param": "gothomisUsername",
+          "displayName": "GoTHOMIS Username",
+          "description": "The GoTHOMIS username for receiving data from the HIM.",
+          "type": "string"
+        },
+        {
+          "param": "gothomisPassword",
+          "displayName": "GoTHOMIS Password",
+          "description": "The GoTHOMIS password for receiving data from the HIM.",
+          "type": "password"
+        }
+      ]
+    },
+    {
+      "param": "afyacareConnectionProperties",
+      "displayName": "AfyaCare Connection Properties",
+      "description": "Configuration to set the hostname, port and path for the AfyaCare server",
+      "type": "struct",
+      "template": [
+        {
+          "param": "afyacareHost",
+          "displayName": "AfyaCare Host Name",
+          "description": "IP address/hostname of the AfyaCare server. e.g 192.168.1.1",
+          "type": "string"
+        },
+        {
+          "param": "afyacarePort",
+          "displayName": "AfyaCare Port Number",
+          "description": "The port number of the AfyaCare server. e.g 8080",
+          "type": "number"
+        },
+        {
+          "param": "afyacarePath",
+          "displayName": "AfyaCare Path",
+          "description": "The AfyaCare path for receiving of data from the HIM. eg /hdr",
+          "type": "string"
+        },
+        {
+          "param": "afyacareScheme",
+          "displayName": "AfyaCare Scheme",
+          "description": "Whether the AfyaCare is using HTTP or HTTPS requests",
+          "type": "option",
+          "values": [
+            "http",
+            "https"
+          ]
+        },
+        {
+          "param": "afyacareUsername",
+          "displayName": "AfyaCare Username",
+          "description": "The AfyaCare username for receiving data from the HIM.",
+          "type": "string"
+        },
+        {
+          "param": "afyacarePassword",
+          "displayName": "AfyaCare Password",
+          "description": "The AfyaCare password for receiving data from the HIM.",
+          "type": "password"
         }
       ]
     }

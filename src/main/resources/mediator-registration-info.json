@@ -7,7 +7,7 @@
     {
       "name": "eLMIS to EMR Mediator Route",
       "host": "localhost",
-      "port": "3016",
+      "port": "3106",
       "path": "/rnr-status",
       "type": "http"
     }
@@ -22,7 +22,7 @@
         {
           "name": "eLMIS to EMR Mediator Route",
           "host": "localhost",
-          "port": "3016",
+          "port": "3106",
           "path": "/rnr-status",
           "type": "http",
           "primary": "true"

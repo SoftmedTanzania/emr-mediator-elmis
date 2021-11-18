@@ -1,0 +1,22 @@
+{
+  "sourceApplication": "GOTHOMIS",
+  "program": "ILS",
+  "hfrId": "12345-6",
+  "isEmergency": false,
+  "rnrId": "123",
+  "period": "Jan-Mar",
+  "status": "REJECTED",
+  "description": "Rejected by regional pharmacist",
+  "dateTime": "2021-10-05 18:00:00",
+  "actedBy": "Hassan Matoto",
+  "level": "District Level",
+  "rejection": {
+    "reasons": [
+      {
+        "code": "112AB",
+        "description": "Missing mandatory commodities"
+      }
+    ],
+    "comment": "Some items are missing"
+  }
+}

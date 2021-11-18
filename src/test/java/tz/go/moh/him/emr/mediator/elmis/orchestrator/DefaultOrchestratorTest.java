@@ -9,6 +9,7 @@ import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang3.tuple.Pair;
 import org.json.JSONObject;
 import org.junit.After;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.openhim.mediator.engine.MediatorConfig;
@@ -29,11 +30,11 @@ import static org.junit.Assert.assertTrue;
 
 public class DefaultOrchestratorTest {
 
-    MediatorConfig config;
     /**
      * Represents the system actor.
      */
     protected static ActorSystem system;
+    MediatorConfig config;
 
     /**
      * Loads the mediator configuration.
@@ -129,6 +130,7 @@ public class DefaultOrchestratorTest {
 
     @Test
     public void testGotHOMISMediatorHTTPRequest() throws Exception {
+        Assert.assertNotNull(system);
         new JavaTestKit(system) {{
             MediatorConfig configuration = config;
             addDynamicConfigs(configuration);
@@ -177,6 +179,7 @@ public class DefaultOrchestratorTest {
 
     @Test
     public void testAfyacareMediatorHTTPRequest() throws Exception {
+        Assert.assertNotNull(system);
         new JavaTestKit(system) {{
             MediatorConfig configuration = config;
             addDynamicConfigs(configuration);

@@ -81,7 +81,7 @@ public class MockDestination extends MockHTTPConnector {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-        } else if (requisitionStatus.getSourceApplication().equalsIgnoreCase("AFYACARE")) {
+        } else if (requisitionStatus.getSourceApplication().equalsIgnoreCase("AFYA_CARE")) {
             InputStream stream = DefaultOrchestratorTest.class.getClassLoader().getResourceAsStream("afyacare-requisition-status.json");
             try {
                 actual = new Gson().fromJson(IOUtils.toString(stream), RequisitionStatus.class);

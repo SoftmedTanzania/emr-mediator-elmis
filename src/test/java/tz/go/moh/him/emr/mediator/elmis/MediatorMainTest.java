@@ -1,4 +1,4 @@
-package tz.go.moh.him.thscp.mediator.muse;
+package tz.go.moh.him.emr.mediator.elmis;
 
 import org.junit.Assert;
 import org.junit.Test;
@@ -25,8 +25,8 @@ public class MediatorMainTest {
         MediatorConfig mediatorConfig = (MediatorConfig) loadConfigMethod.invoke(null, "src/test/resources/mediator.properties");
 
         Assert.assertEquals("localhost", mediatorConfig.getServerHost());
-        Assert.assertEquals(new Integer(3020), mediatorConfig.getServerPort());
-        Assert.assertEquals(new Integer(60000), mediatorConfig.getRootTimeout());
+        Assert.assertEquals(new Integer(3106), mediatorConfig.getServerPort());
+        Assert.assertEquals(new Integer(600000), mediatorConfig.getRootTimeout());
         Assert.assertTrue(mediatorConfig.getHeartsbeatEnabled());
     }
 }

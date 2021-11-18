@@ -9,7 +9,9 @@ import org.apache.commons.lang3.tuple.Pair;
 import org.apache.http.HttpHeaders;
 import org.json.JSONObject;
 import org.openhim.mediator.engine.MediatorConfig;
+import org.openhim.mediator.engine.messages.FinishRequest;
 import org.openhim.mediator.engine.messages.MediatorHTTPRequest;
+import org.openhim.mediator.engine.messages.MediatorHTTPResponse;
 import tz.go.moh.him.emr.mediator.elmis.domain.RequisitionStatus;
 import tz.go.moh.him.mediator.core.serialization.JsonSerializer;
 
@@ -99,7 +101,7 @@ public class DefaultOrchestrator extends UntypedActor {
                     JSONObject connectionProperties = new JSONObject(config.getDynamicConfig()).getJSONObject("gothomisConnectionProperties");
                     host = connectionProperties.getString("gothomisHost");
                     port = connectionProperties.getInt("gothomisPort");
-                    path = connectionProperties.getString("gothomisFundSourcesPath");
+                    path = connectionProperties.getString("gothomisPath");
                     scheme = connectionProperties.getString("gothomisScheme");
 
                     if (connectionProperties.has("gothomisUsername") && connectionProperties.has("gothomisPassword")) {
@@ -110,7 +112,7 @@ public class DefaultOrchestrator extends UntypedActor {
                     JSONObject connectionProperties = new JSONObject(config.getDynamicConfig()).getJSONObject("afyacareConnectionProperties");
                     host = connectionProperties.getString("afyacareHost");
                     port = connectionProperties.getInt("afyacarePort");
-                    path = connectionProperties.getString("afyacareFundSourcesPath");
+                    path = connectionProperties.getString("afyacarePath");
                     scheme = connectionProperties.getString("afyacareScheme");
 
                     if (connectionProperties.has("afyacareUsername") && connectionProperties.has("afyacarePassword")) {
@@ -131,10 +133,15 @@ public class DefaultOrchestrator extends UntypedActor {
             host = scheme + "://" + host + ":" + port + path;
 
             MediatorHTTPRequest request = new MediatorHTTPRequest(originalRequest.getRequestHandler(), getSelf(), host, "POST",
-                    host, originalRequest.getBody(), headers, parameters);
+                    host, serializer.serializeToString(requisitionStatus), headers, parameters);
 
             ActorSelection httpConnector = getContext().actorSelection(config.userPathFor("http-connector"));
             httpConnector.tell(request, getSelf());
+        } else if (msg instanceof MediatorHTTPResponse) { //respond
+            log.info("Received response from target system");
+
+            FinishRequest finishRequest = ((MediatorHTTPResponse) msg).toFinishRequest();
+            (originalRequest).getRequestHandler().tell(finishRequest, getSelf());
         } else {
             unhandled(msg);
         }

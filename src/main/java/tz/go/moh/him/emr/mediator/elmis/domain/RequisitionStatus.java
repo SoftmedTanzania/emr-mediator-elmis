@@ -1,51 +1,72 @@
 package tz.go.moh.him.emr.mediator.elmis.domain;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.google.gson.annotations.SerializedName;
+
 import java.util.List;
 
 public class RequisitionStatus {
     /**
      * The source application. either AfyaCare or GoTHOMIS.
      */
+    @SerializedName("sourceApplication")
+    @JsonProperty("sourceApplication")
     private String sourceApplication;
 
     /**
      * The program code.
      */
+    @SerializedName("program")
+    @JsonProperty("program")
     private String program;
 
     /**
      * The HFR code of the facility.
      */
+    @SerializedName("hfrId")
+    @JsonProperty("hfrId")
     private String hfrId;
 
     /**
      * The flag whether the rnr was an emergency.
      */
+    @SerializedName("isEmergency")
+    @JsonProperty("isEmergency")
     private boolean isEmergency;
 
     /**
      * The Report and Requisition ID
      */
+    @SerializedName("rnrId")
+    @JsonProperty("rnrId")
     private String rnrId;
 
     /**
      * The Reporting period
      */
+    @SerializedName("period")
+    @JsonProperty("period")
     private String period;
 
     /**
      * The R&R status
      */
+    @SerializedName("status")
+    @JsonProperty("status")
     private String status;
 
     /**
      * The R&R status description
      */
+    @SerializedName("description")
+    @JsonProperty("description")
     private String description;
 
     /**
      * The Date Time
      */
+    @SerializedName("dateTime")
+    @JsonProperty("dateTime")
     private String dateTime;
 
     /**
@@ -91,7 +112,7 @@ public class RequisitionStatus {
         return isEmergency;
     }
 
-    public void setEmergency(boolean emergency) {
+    public void setIsEmergency(boolean emergency) {
         isEmergency = emergency;
     }
 

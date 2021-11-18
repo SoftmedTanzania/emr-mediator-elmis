@@ -83,7 +83,7 @@ public class DefaultOrchestrator extends UntypedActor {
                     } else {
                         scheme = "http";
                     }
-                } else if (requisitionStatus.getSourceApplication().equalsIgnoreCase("AFYACARE")) {
+                } else if (requisitionStatus.getSourceApplication().equalsIgnoreCase("AFYA_CARE")) {
                     host = config.getProperty("afyacare.host");
                     port = Integer.parseInt(config.getProperty("afyacare.port"));
                     path = config.getProperty("afyacare.path");
@@ -108,7 +108,7 @@ public class DefaultOrchestrator extends UntypedActor {
                         username = connectionProperties.getString("gothomisUsername");
                         password = connectionProperties.getString("gothomisPassword");
                     }
-                } else if (requisitionStatus.getSourceApplication().equalsIgnoreCase("AFYACARE")) {
+                } else if (requisitionStatus.getSourceApplication().equalsIgnoreCase("AFYA_CARE")) {
                     JSONObject connectionProperties = new JSONObject(config.getDynamicConfig()).getJSONObject("afyacareConnectionProperties");
                     host = connectionProperties.getString("afyacareHost");
                     port = connectionProperties.getInt("afyacarePort");

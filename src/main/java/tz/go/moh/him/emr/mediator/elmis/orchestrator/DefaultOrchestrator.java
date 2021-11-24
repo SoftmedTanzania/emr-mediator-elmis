@@ -21,6 +21,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import static org.apache.http.HttpStatus.SC_BAD_REQUEST;
+
 public class DefaultOrchestrator extends UntypedActor {
     /**
      * The serializer.
@@ -57,7 +59,16 @@ public class DefaultOrchestrator extends UntypedActor {
             originalRequest = (MediatorHTTPRequest) msg;
             log.info("Received request: " + originalRequest.getHost() + " " + originalRequest.getMethod() + " " + originalRequest.getPath() + " " + originalRequest.getBody());
 
-            RequisitionStatus requisitionStatus = serializer.deserialize(((MediatorHTTPRequest) msg).getBody(), RequisitionStatus.class);
+            RequisitionStatus requisitionStatus = null;
+            try {
+                requisitionStatus = serializer.deserialize(((MediatorHTTPRequest) msg).getBody(), RequisitionStatus.class);
+            } catch (Exception e) {
+                log.error(e.getMessage());
+
+                FinishRequest finishRequest = new FinishRequest("Bad Request", "application/json", SC_BAD_REQUEST);
+                (originalRequest).getRequestHandler().tell(finishRequest, getSelf());
+                return;
+            }
 
             String host = null;
             int port = 0;
